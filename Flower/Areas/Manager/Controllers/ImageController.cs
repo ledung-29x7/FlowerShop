@@ -46,8 +46,7 @@ namespace Flower.Areas.Manager.Controllers
 
             await _repository.AddImages(images);
 
-            //return Created("api/Image/upload", new { count = images.Count });
-            return Ok(images);
+            return Created("api/Image/upload", new { count = images.Count });
         }
 
 
@@ -61,8 +60,8 @@ namespace Flower.Areas.Manager.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteImage(int id)
         {
-            await _repository.DeleteImage(id);
-            return NoContent();
+            await _repository.DeleteImageByFlowerId(id);
+            return Ok("Delete Image success");
         }
     }
 }

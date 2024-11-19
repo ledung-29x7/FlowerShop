@@ -6,6 +6,6 @@ namespace Flower.DAL.Interfaces
     {
         Task AddImages(List<Image> images);
         Task<List<Image>> GetImageByFlowerId(int flower_id);
-        Task DeleteImage(int id);
+        Task DeleteImageByFlowerId(int flower_id);
     }
 }
