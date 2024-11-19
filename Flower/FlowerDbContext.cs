@@ -25,5 +25,6 @@ namespace Flower
         public DbSet<Occasion> occasions { get; set; }
         public DbSet<Flowers> flowers { get; set; }
         public DbSet<Image> images { get; set; }
+        public DbSet<Store> stores { get; set; }
     }
 }

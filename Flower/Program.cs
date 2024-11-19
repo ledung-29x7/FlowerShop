@@ -24,6 +24,7 @@ builder.Services.AddScoped<ITokenBlacklistRepository, RedisTokenBlacklistReposit
 builder.Services.AddScoped<IOccasionRepository, OccasionRepository>();
 builder.Services.AddScoped<IFlowerRepository, FlowerRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 
 
 
@@ -33,6 +34,7 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddAutoMapper(typeof(Regiter_User_Profile));
 builder.Services.AddAutoMapper(typeof(OccasionDto_Occasion));
 builder.Services.AddAutoMapper(typeof(Create_FlowerDto_Profile));
+builder.Services.AddAutoMapper(typeof(StoreDto_Store));
 
 // Phan quyen
 
