@@ -1,4 +1,6 @@
-﻿namespace Flower.Areas.Admin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Flower.Areas.Admin.Models
 {
     public class Store
     {
@@ -9,6 +11,7 @@
         private string email;
         private DateTime? created_at;
 
+        [Key]
         public int Store_id { get => store_id; set => store_id = value; }
         public string Store_name { get => store_name; set => store_name = value; }
         public string Address { get => address; set => address = value; }

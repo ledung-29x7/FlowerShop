@@ -460,3 +460,56 @@ BEGIN
     WHERE flower_id = @FlowerId;
 END;
 GO
+GO
+CREATE PROCEDURE dbo.CreateStore
+    @Name NVARCHAR(255),
+    @Address NVARCHAR(255),
+    @Phone_number NVARCHAR(20),
+    @Email NVARCHAR(255)
+AS
+BEGIN
+    INSERT INTO Stores (store_name, address, phone_number, email, created_at)
+    VALUES (@Name, @Address, @Phone_number, @Email, GETDATE());
+END;
+GO
+CREATE PROCEDURE dbo.DeleteStore
+    @Store_id INT
+AS
+BEGIN
+    DELETE FROM Stores
+    WHERE store_id = @Store_id;
+END;
+GO
+CREATE PROCEDURE dbo.GetStores
+AS
+BEGIN
+    SELECT store_id, store_name, address, phone_number, email, created_at
+    FROM Stores;
+END;
+GO
+CREATE PROCEDURE dbo.GetStoreById
+    @Store_id INT
+AS
+BEGIN
+    SELECT store_id, store_name, address, phone_number, email, created_at
+    FROM Stores
+    WHERE store_id = @Store_id;
+END;
+GO
+CREATE PROCEDURE dbo.UpdateStore
+    @Store_id INT,
+    @Name NVARCHAR(255),
+    @Address NVARCHAR(255),
+    @Phone_number NVARCHAR(20),
+    @Email NVARCHAR(255)
+AS
+BEGIN
+    UPDATE Stores
+    SET 
+        store_name = @Name,
+        address = @Address,
+        phone_number = @Phone_number,
+        email = @Email
+    WHERE store_id = @Store_id;
+END;
+GO

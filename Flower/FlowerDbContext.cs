@@ -1,5 +1,6 @@
 ﻿using Flower.Areas.Admin.Models;
 using Flower.Areas.Auther.Models;
+using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,7 @@ namespace Flower
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FlowerWithImagesDto>().HasNoKey();
             base.OnModelCreating(modelBuilder);
             
         }
@@ -26,5 +28,6 @@ namespace Flower
         public DbSet<Flowers> flowers { get; set; }
         public DbSet<Image> images { get; set; }
         public DbSet<Store> stores { get; set; }
+        public DbSet<FlowerWithImagesDto> flowerWithImagesDtos { get; set; }
     }
 }

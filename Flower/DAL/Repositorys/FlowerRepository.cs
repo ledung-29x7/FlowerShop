@@ -1,4 +1,6 @@
-﻿using Flower.Areas.Admin.Models;
+﻿using AutoMapper;
+using Flower.Areas.Admin.Models;
+using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
 using Flower.DAL.Interfaces;
 using Microsoft.Data.SqlClient;
@@ -9,10 +11,12 @@ namespace Flower.DAL.Repositorys
     public class FlowerRepository : IFlowerRepository
     {
         private readonly FlowerDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public FlowerRepository(FlowerDbContext dbContext) 
+        public FlowerRepository(FlowerDbContext dbContext, IMapper mapper) 
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
         public async Task CreateFlower(Flowers flowers)
         {
@@ -36,18 +40,31 @@ namespace Flower.DAL.Repositorys
             return await Task.FromResult(_dbContext.flowers.FromSqlRaw("EXECUTE dbo.GetFlower").ToList());
         }
 
-        public async Task<Flowers> GetFlowerById(int flower_id)
+        public async Task<FlowerDetailDto?> GetFlowerById(int flower_id)
         {
-            var id_Param = new SqlParameter("@Flower_id", flower_id);
-            var occasions = await _dbContext.flowers
-                .FromSqlRaw("EXECUTE dbo.GetFlowerById @Flower_id", id_Param)
+            var idParam = new SqlParameter("@Flower_id", flower_id);
+
+            var result = await _dbContext.Set<FlowerWithImagesDto>()
+                .FromSqlRaw("EXECUTE dbo.GetFlowerById @Flower_id", idParam)
                 .ToListAsync();
-            return occasions.FirstOrDefault();
+
+            if (!result.Any()) return null;
+
+            // Dùng AutoMapper để ánh xạ dữ liệu
+            var flowerDetailDto = _mapper.Map<FlowerDetailDto>(result.First());
+
+            // Ánh xạ thủ công danh sách hình ảnh
+            flowerDetailDto.Images = _mapper.Map<List<ImageDto>>(
+                result.Where(r => !string.IsNullOrEmpty(r.ImageName))
+            );
+
+
+            return flowerDetailDto;
         }
 
-        public async Task UpdateFlower(Flowers flowers)
+        public async Task UpdateFlower(FlowerDetailDto flowers)
         {
-            var id_Param = new SqlParameter("@Flower_id", flowers.Flower_id);
+            var id_Param = new SqlParameter("@Flower_id", flowers.Id);
             var name_param = new SqlParameter("@Name", flowers.Name);
             var description_param = new SqlParameter("@Description", flowers.Description);
             var Price_param = new SqlParameter("@Price", flowers.Price);

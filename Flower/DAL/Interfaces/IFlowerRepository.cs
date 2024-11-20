@@ -1,4 +1,5 @@
 ﻿using Flower.Areas.Admin.Models;
+using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
 
 namespace Flower.DAL.Interfaces
@@ -7,8 +8,8 @@ namespace Flower.DAL.Interfaces
     {
         Task CreateFlower(Flowers flowers);
         Task<List<Flowers>> GetFlower();
-        Task<Flowers> GetFlowerById(int flower_id);
-        Task UpdateFlower(Flowers flowers);
+        Task<FlowerDetailDto> GetFlowerById(int flower_id);
+        Task UpdateFlower(FlowerDetailDto flowers);
         Task DeleteFlower(int flower_id);
     }
 }

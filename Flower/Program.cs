@@ -35,6 +35,7 @@ builder.Services.AddAutoMapper(typeof(Regiter_User_Profile));
 builder.Services.AddAutoMapper(typeof(OccasionDto_Occasion));
 builder.Services.AddAutoMapper(typeof(Create_FlowerDto_Profile));
 builder.Services.AddAutoMapper(typeof(StoreDto_Store));
+builder.Services.AddAutoMapper(typeof(Flower_Profile));
 
 // Phan quyen
 

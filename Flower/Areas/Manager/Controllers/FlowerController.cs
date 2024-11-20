@@ -37,7 +37,6 @@ namespace Flower.Areas.Manager.Controllers
             var flower = await _flowerRepository.GetFlowerById(id);
             if (flower == null)
                 return NotFound("Flower not found");
-
             return Ok(flower);
         }
 
@@ -60,7 +59,7 @@ namespace Flower.Areas.Manager.Controllers
             var flower = await _flowerRepository.GetFlowerById(id);
             if (flower == null)
                 return NotFound("Flower not found");
-            flower = _mapper.Map<Flowers>(dto);
+            flower = _mapper.Map<FlowerDetailDto>(dto);
             await _flowerRepository.UpdateFlower(flower);
             return Ok("Update Flower Success");
         }
