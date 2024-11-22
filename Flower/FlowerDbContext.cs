@@ -2,6 +2,7 @@
 using Flower.Areas.Auther.Models;
 using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
+using Flower.Areas.User.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Flower
@@ -18,8 +19,8 @@ namespace Flower
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<FlowerWithImagesDto>().HasNoKey();
+            modelBuilder.Entity<Cart>().HasNoKey();
             base.OnModelCreating(modelBuilder);
-            
         }
 
         public DbSet<User> users { get; set; }
@@ -29,5 +30,15 @@ namespace Flower
         public DbSet<Image> images { get; set; }
         public DbSet<Store> stores { get; set; }
         public DbSet<FlowerWithImagesDto> flowerWithImagesDtos { get; set; }
+        public DbSet<Cart> carts { get; set; }
+        public DbSet<Cart_Items> Cart_Items { get; set; }
+        public DbSet<Message> messages { get; set; }
+        public DbSet<Order> orders { get; set; }
+        public DbSet<Order_Items> order_items { get; set; }
+        public DbSet<SalesReport> salesReports { get; set; }
+        public DbSet<StoreFlower> storeFlowers { get; set; }
+        public DbSet<Notification> notifications { get; set; }
+        public DbSet<UserStore> userStores { get; set; }
+        
     }
 }
