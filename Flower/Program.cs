@@ -23,7 +23,8 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenBlacklistRepository, RedisTokenBlacklistRepository>();
 builder.Services.AddScoped<IOccasionRepository, OccasionRepository>();
 builder.Services.AddScoped<IFlowerRepository, FlowerRepository>();
-
+builder.Services.AddScoped<IViewOrderRepository, ViewOrderRepository>(); // QA
+builder.Services.AddScoped<IViewOrderService, ViewOrderService>(); //QA
 
 
 

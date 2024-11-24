@@ -1,5 +1,6 @@
 ﻿using Flower.Areas.Admin.Models;
 using Flower.Areas.Auther.Models;
+using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,5 +26,6 @@ namespace Flower
         public DbSet<Occasion> occasions { get; set; }
         public DbSet<Flowers> flowers { get; set; }
         public DbSet<Image> images { get; set; }
+        public DbSet<Order> orders { get; set; } //QA //QA
     }
 }
