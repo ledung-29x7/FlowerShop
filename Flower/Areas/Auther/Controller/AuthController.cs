@@ -37,7 +37,7 @@ namespace Flower.Areas.Auther.Controller
             if (existingUser != null)
                 return BadRequest("Email is already registered.");
 
-            var user = _mapper.Map<User>(registerDto);
+            var user = _mapper.Map<Models.User>(registerDto);
             user.Password_hash = BCrypt.Net.BCrypt.HashPassword(registerDto.password_hash);
             await _repository.RegisterUser(user);
 

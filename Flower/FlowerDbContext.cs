@@ -2,6 +2,7 @@
 using Flower.Areas.Auther.Models;
 using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
+using Flower.Areas.User.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Flower
@@ -18,8 +19,16 @@ namespace Flower
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<FlowerWithImagesDto>().HasNoKey();
+            modelBuilder.Entity<OrderDetailsDto>().HasNoKey();
+            modelBuilder.Entity<AddItemToCartRequest>(entity =>
+            {
+                entity.HasNoKey(); // Định nghĩa lớp này là không có khóa
+            });
             base.OnModelCreating(modelBuilder);
             
+
+
+
         }
 
         public DbSet<User> users { get; set; }
@@ -29,5 +38,7 @@ namespace Flower
         public DbSet<Image> images { get; set; }
         public DbSet<Store> stores { get; set; }
         public DbSet<FlowerWithImagesDto> flowerWithImagesDtos { get; set; }
+        public DbSet<OrderDetailsDto> OrderDetails { get; set; }
+        public DbSet<AddItemToCartRequest> AddItemToCartRequest {  get; set; }
     }
 }
