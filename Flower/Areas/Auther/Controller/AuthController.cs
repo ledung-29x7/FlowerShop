@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Flower.Areas.Auther.Models;
 using Flower.Areas.Dtos;
 using Flower.DAL.Interfaces;
 using Flower.DAL.Repositorys;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
+using Flower.Areas.Auther.Models;
 
 namespace Flower.Areas.Auther.Controller
 {

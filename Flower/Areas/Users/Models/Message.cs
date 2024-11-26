@@ -1,4 +1,4 @@
-﻿namespace Flower.Areas.User.Models
+﻿namespace Flower.Areas.Users.Models
 {
     public class Message
     {

@@ -1,4 +1,4 @@
-using Flower;
+﻿using Flower;
 using Flower.DAL.Interfaces;
 using Flower.DAL.Repositorys;
 using Flower.MappingProfile;
@@ -25,6 +25,8 @@ builder.Services.AddScoped<IOccasionRepository, OccasionRepository>();
 builder.Services.AddScoped<IFlowerRepository, FlowerRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 
 
@@ -88,6 +90,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+//Cau hinh session
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["Redis:ConnectionString"];
+    options.InstanceName = "FlowerApp:";
+});
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".Flower.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 
 
 builder.Services.AddAuthorization();
@@ -101,7 +118,12 @@ builder.Services.AddSwaggerGen();
 
 
 
+
+
+
 var app = builder.Build();
+
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

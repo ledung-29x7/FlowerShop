@@ -2,7 +2,7 @@
 using Flower.Areas.Auther.Models;
 using Flower.Areas.Dtos;
 using Flower.Areas.Manager.Models;
-using Flower.Areas.User.Models;
+using Flower.Areas.Users.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Flower
@@ -20,6 +20,20 @@ namespace Flower
         {
             modelBuilder.Entity<FlowerWithImagesDto>().HasNoKey();
             modelBuilder.Entity<Cart>().HasNoKey();
+            modelBuilder.Entity<UserStore>().HasNoKey();
+            modelBuilder.Entity<Notification>().HasNoKey();
+            modelBuilder.Entity<SalesReport>().HasNoKey();
+            modelBuilder.Entity<Order>().HasNoKey();
+            modelBuilder.Entity<Order_Items>().HasNoKey();
+            modelBuilder.Entity<Message>().HasNoKey();
+            modelBuilder.Entity<Cart_Items>().HasNoKey();
+            modelBuilder.Entity<StoreFlower>().HasNoKey();
+            modelBuilder.Entity<CartItemDto>().HasNoKey();
+
+
+
+
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -39,6 +53,6 @@ namespace Flower
         public DbSet<StoreFlower> storeFlowers { get; set; }
         public DbSet<Notification> notifications { get; set; }
         public DbSet<UserStore> userStores { get; set; }
-        
+        public DbSet<CartItemDto> cartItemDtos { get; set; }
     }
 }
