@@ -7,7 +7,6 @@ function FlowerPage () {
 
     const catagoryFilter = (name) => {
 
-
         return(
             <div className="block box-border ">
                 <div className=" pb-5 border-b mb-5">
@@ -59,7 +58,7 @@ function FlowerPage () {
                         <div className=" grid pt-1 m-0 grid-cols-3 gap-16 clear-both">
                             <FrameDisplay src="https://fiore.vamtam.com/wp-content/uploads/2022/04/one_last_kiss__49979.1640010425-420x420.jpg" 
                                 link={`/client/flowers/${flower?.id}`}
-                                name="Bisous"
+                                name={flower?.name}
                                 price="100.00 - $140.00"
                             />
                         </div>
