@@ -58,6 +58,7 @@ var router = [
         component: <Signup/>,
         layout: "/client",
     },
+    {
         path: "/home/add",
         name: "Home",
         icon: "ni ni-tv-2 text-primary",
