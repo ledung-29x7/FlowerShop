@@ -1,3 +1,4 @@
+import { Delete } from "./apis";
 import AddFlower from "./view/admin/AddFlowers";
 import EditFlower from "./view/admin/EditFlowers";
 import HomeAdmin from "./view/admin/HomeAdmin";
@@ -54,6 +55,13 @@ var router = [
         name: "Home",
         icon: "ni ni-tv-2 text-primary",
         component: <EditFlower/>,
+        layout: "/admin",
+    },
+    {
+        path: "/home/delete/:id",
+        name: "Home",
+        icon: "ni ni-tv-2 text-primary",
+        component: <Delete/>,
         layout: "/admin",
     },
 

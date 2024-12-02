@@ -1,31 +1,46 @@
 import { useEffect, useState } from "react";
 import * as apis from "../../apis"
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useStore } from "react-redux";
+
 
 function HomeAdmin() {
     const [flower, setFlower] = useState([]);
     const [addflower,setAddFlower] =useState({
 
     })
-    useEffect(()=>{
-        const FetchApi = async() => {
-            try {
-                await apis.getAllFlowers()
-                .then(res=>{
-                    if(res.status === 200){
-                        console.log(res)
-                        setFlower(res.data)
-                    }
-                })
-                .catch(error =>{
-                    console.log(error)
-                })
-            } catch (error) {
+    const FetchApi = async() => {
+        try {
+            await apis.getAllFlowers()
+            .then(res=>{
+                if(res.status === 200){
+                    console.log(res)
+                    setFlower(res.data)
+                }
+            })
+            .catch(error =>{
                 console.log(error)
-            }
+            })
+        } catch (error) {
+            console.log(error)
         }
+    }
+    useEffect(()=>{
         FetchApi()
     },[])
+    
+    const handleDelete = async(id)=>{
+        try {
+            const res=await apis.Delete(id);
+            if (res.status ===200){
+                FetchApi();
+                console.log("delete success")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -57,8 +72,15 @@ function HomeAdmin() {
                     <Link to="/admin/home/add" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Add</Link>
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <Link to={`/admin/home/edit/${res.lower_id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
+                    <Link to={`/admin/home/edit/${res?.lower_id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                 </td>
+                {/* <td class="px-6 py-4 text-right">
+                    <Link to={`/admin/home/delete/${res.lower_id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">delete</Link>
+                </td> */}
+                <td class="px-6 py-4 text-right">
+                    <button onClick={()=>handleDelete(res?.flower_id)} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">delete</button>
+                </td>
+
 
                         </tr>
                         )}
