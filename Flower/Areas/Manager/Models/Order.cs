@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Flower.DAL;
 using Flower.Areas;
+using Flower.Areas.Auther.Models;
 
 namespace Flower.Areas.Manager.Models
 {
@@ -23,6 +24,7 @@ namespace Flower.Areas.Manager.Models
     public string StoreAddress { get; set; }
     public string StorePhone { get; set; }
     public string StoreEmail { get; set; }
+
 
     }
 }

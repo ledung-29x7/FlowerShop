@@ -10,7 +10,7 @@ namespace Flower
     {
         public FlowerDbContext() { }
 
-        public FlowerDbContext(DbContextOptions<FlowerDbContext> options): base(options) { }
+        public FlowerDbContext(DbContextOptions<FlowerDbContext> options) : base(options) { }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
             base.ConfigureConventions(configurationBuilder);
@@ -18,7 +18,7 @@ namespace Flower
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
         }
 
         public DbSet<User> users { get; set; }
