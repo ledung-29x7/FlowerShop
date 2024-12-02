@@ -3,6 +3,8 @@ import DetailFlower from "./view/detail/DetailFlower";
 import FlowerPage from "./view/flowers/FlowerPage";
 import HomePage from "./view/home/HomePage";
 import Cart from "./view/paymen/cart";
+import Login from "./view/user/login";
+import Signup from "./view/user/signup";
 
 var router = [
     {
@@ -39,6 +41,20 @@ var router = [
         icon: "ni ni-tv-2 text-primary",
         component: <HomeAdmin/>,
         layout: "/admin",
+    },
+    {
+        path: "/login",
+        name: "Home",
+        icon: "ni ni-tv-2 text-primary",
+        component: <Login/>,
+        layout: "/client",
+    },
+    {
+        path: "/resigter",
+        name: "Home",
+        icon: "ni ni-tv-2 text-primary",
+        component: <Signup/>,
+        layout: "/client",
     },
 
 ];

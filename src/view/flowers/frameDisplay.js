@@ -8,8 +8,8 @@ function FrameDisplay (props) {
                   
                 </Link>
             </div>
-            <div className="flex-1 order-3 z-10 bg-[#F1EFEB00] pt-5">
-                <Link className=" h-auto overflow-auto block" to={props.link} >
+            <div className="flex-1 flex flex-col justify-center items-center order-3 z-10 bg-[#F1EFEB00] pt-5">
+                <Link className=" font-semibold h-auto overflow-auto block" to={props.link} >
                     {props.name}
                 </Link>
                 <span className="">

@@ -1,5 +1,5 @@
 const actionType = {
-    GETHOME: "GETHOME",
+    CHECK_LOGIN: "CHECK_LOGIN",
 }
 
 export default actionType

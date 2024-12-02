@@ -26,6 +26,7 @@ function FlowerPage () {
                 .then(res=>{
                     if(res.status === 200){
                         setFlower(res.data)
+                        console.log(res)
                     }
                 })
             } catch (error) {
@@ -57,11 +58,13 @@ function FlowerPage () {
                 <div className="pt-28 w-2/3">
                     <div className="border-t">
                         <div className=" grid pt-1 m-0 grid-cols-3 gap-16 clear-both">
-                            <FrameDisplay src="https://fiore.vamtam.com/wp-content/uploads/2022/04/one_last_kiss__49979.1640010425-420x420.jpg" 
-                                link={`/client/flowers/${flower?.id}`}
-                                name="Bisous"
-                                price="100.00 - $140.00"
+                            {flower.map((res)=>
+                                <FrameDisplay src="https://fiore.vamtam.com/wp-content/uploads/2022/04/one_last_kiss__49979.1640010425-420x420.jpg" 
+                                link={`/client/flowers/${res?.flower_id}`}
+                                name={res?.name}
+                                price={res?.price}
                             />
+                            )}
                         </div>
                         
                     </div>

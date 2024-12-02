@@ -8,10 +8,10 @@ const initState = {
 
 const appReducer = (state = initState,action) =>{
     switch (action.type) {
-        case actionType.GETHOME:
+        case actionType.CHECK_LOGIN:
             return {
                 ...state,
-                plamtSale: action.homeData
+                checklogin: action.ischeck
             }
         
         default:

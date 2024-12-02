@@ -3,7 +3,7 @@ import apis from "../axios";
 export const getHome = () => new Promise( async(resolve,reject)=>{
     try {
         const response = await apis({
-            url: "/flower",
+            url: "/Flower",
             method:"get"
             
         })
@@ -16,7 +16,7 @@ export const getHome = () => new Promise( async(resolve,reject)=>{
 export const getFlowerById = (id) => new Promise (async(resolve,reject)=>{
     try {
         const response = await apis({
-            url: `/flower/${id}`,
+            url: `/Flower/${id}`,
             method: "get"
         })
         resolve(response)

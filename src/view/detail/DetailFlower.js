@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 function DetailFlower() {
   const { id } = useParams();
-  const [flower, setFlower] = useState([]);
+  const [flower, setFlower] = useState({});
   const FetchApi = async () => {
     try {
       await apis.getFlowerById(id).then((res) => {
@@ -41,10 +41,10 @@ function DetailFlower() {
               <div className="pb-8">
                 <div className="max-w-sm mx-auto">
                     <div className="mb-3">
-                        <h3 className=" text-4xl ">{"Bisous"}</h3>
+                        <h3 className=" text-4xl ">{flower?.name}</h3>
                     </div>
                     <div className="mb-3 text-2xl font-semibold">
-                        <span>${"100.00"}</span>
+                        <span>${flower?.price}</span>
                     </div>
                 </div>
               </div>
