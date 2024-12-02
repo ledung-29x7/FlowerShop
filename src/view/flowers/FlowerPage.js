@@ -7,7 +7,6 @@ function FlowerPage () {
 
     const catagoryFilter = (name) => {
 
-
         return(
             <div className="block box-border ">
                 <div className=" pb-5 border-b mb-5">

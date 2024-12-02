@@ -1,3 +1,5 @@
+import AddFlower from "./view/admin/AddFlowers";
+import EditFlower from "./view/admin/EditFlowers";
 import HomeAdmin from "./view/admin/HomeAdmin";
 import DetailFlower from "./view/detail/DetailFlower";
 import FlowerPage from "./view/flowers/FlowerPage";
@@ -56,6 +58,20 @@ var router = [
         component: <Signup/>,
         layout: "/client",
     },
+        path: "/home/add",
+        name: "Home",
+        icon: "ni ni-tv-2 text-primary",
+        component: <AddFlower/>,
+        layout: "/admin",
+    },
+    {
+        path: "/home/edit/:id",
+        name: "Home",
+        icon: "ni ni-tv-2 text-primary",
+        component: <EditFlower/>,
+        layout: "/admin",
+    },
+
 
 ];
 
